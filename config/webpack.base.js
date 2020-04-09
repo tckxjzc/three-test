@@ -47,7 +47,7 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 use: [
                     'babel-loader',
-                    'eslint-loader'
+                    // 'eslint-loader'
                 ],
                 ...include
             },
@@ -55,7 +55,7 @@ module.exports = {
                 test: /\.(ts|tsx)$/,
                 use: [
                     'babel-loader',
-                    'eslint-loader',
+                    // 'eslint-loader',
                     "ts-loader"
                 ],
                 ...include

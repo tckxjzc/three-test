@@ -3,13 +3,13 @@ let path=require('path');
 module.exports = {
    getScssLoader(modules = false,env=false) {
         let options = {
-            minimize: env,
+            // minimize: env,
             modules: modules,
-            localIdentName: '[local]_[hash:8]'
+            localsConvention:'camelCaseOnly'
         };
-        if (!modules) {
-            options['root'] = path.resolve(__dirname, '../');
-        }
+        // if (!modules) {
+        //     options['root'] = path.resolve(__dirname, '../');
+        // }
         return [
             {
                 loader: 'style-loader'
@@ -29,7 +29,6 @@ module.exports = {
             {
                 loader: 'sass-loader',
                 options: {
-                    includePaths: []
 
                 }
             },

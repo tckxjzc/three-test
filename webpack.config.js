@@ -7,7 +7,7 @@ let {dist,title}=config;
 let path=require('path');
 let webpack=require('webpack');
 module.exports=merge(baseConfig,{
-    mode:'none',
+    mode:'development',
     plugins:[
         new webpack.DefinePlugin({
             'wbp.dev':'true'

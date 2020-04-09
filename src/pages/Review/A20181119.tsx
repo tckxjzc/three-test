@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import * as  THREE from 'three';
 import {AnimationUtils, Mesh, MeshNormalMaterial, Scene, Vector3} from "three";
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
 type Props = {};
 
@@ -64,7 +65,7 @@ class A20181119 extends Component<Props> {
         }
 
         r();
-        let controls = new THREE.OrbitControls(camera);
+        let controls = new OrbitControls(camera);
     };
 }
 

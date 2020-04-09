@@ -12,6 +12,7 @@ import {
     Vector3,
     WebGLRenderer
 } from 'three';
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
 
 
@@ -47,7 +48,7 @@ class Curve extends Component<Props> {
     /**
      *properties
      */
-    size = 480;
+    size = 800;
     container = React.createRef<HTMLDivElement>();
     /**
      *method
@@ -62,15 +63,14 @@ class Curve extends Component<Props> {
         let pointLight = new PointLight(0xffffff);
         pointLight.position.set(400,300,200);
         scene.add(pointLight);
-        let ambientLight = new AmbientLight(0xdddddd);
+        let ambientLight = new AmbientLight(0x999999);
         scene.add(ambientLight);
 
 
-        let camera = new THREE.PerspectiveCamera(50,1,0.1,1000);
+        let camera = new THREE.PerspectiveCamera(50,1,1,1000);
 
-
+        camera.position.set(9,9,9);//在lookat前面
         camera.lookAt(0,0,0);
-        camera.position.set(9,9,9);
 
         let romCurve3 = new CatmullRomCurve3([
             new Vector3(-2,0,1),
@@ -89,7 +89,7 @@ class Curve extends Component<Props> {
         geometry.setFromPoints(bezierCurve3.getPoints(100));
         let material = new PointsMaterial({color: 0xff0000});
         let mesh = new Line(geometry,material);
-        scene.add(mesh);
+        // scene.add(mesh);
         let curvePath = new CurvePath();
         // curvePath.curves.push(bezierCurve3);
         curvePath.curves.push(romCurve3);
@@ -107,18 +107,18 @@ class Curve extends Component<Props> {
         let normalMaterial = new THREE.MeshNormalMaterial();
         let mesh2 = new Mesh(box,normalMaterial);
         scene.add(mesh2);
-
+        console.log(scene);
 
         function r(){
             requestAnimationFrame(r);
+            // camera.position.z+=0.01;
             render.render(scene,camera);
         }
         r();
-        document.body.onclick=()=>{
-            console.log(camera)
-            console.log(camera.position)
-        };
-        let controls = new THREE.OrbitControls(camera);
+        // document.body.onclick=()=>{
+        //     console.log(camera);
+        // };
+        let controls = new OrbitControls(camera,render.domElement);
 
     };
 

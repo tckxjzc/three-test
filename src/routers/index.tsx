@@ -9,11 +9,12 @@ import {
 
 
 export default <Router history={history}>
-    <Route render={({location})=>{
+    <Route render={({location}) => {
         return <Switch location={location}>
-            <Route path={'/20181119'}  component={()=><Bundle el={()=>import('pages/Review/A20181119')}/>} />
-            <Route path={'/curve'}  component={()=><Bundle el={()=>import('pages/Curve')}/>} />
-            <Route path={'/'}  component={()=><Bundle el={()=>import('pages/Home')}/>} />
+            <Route path={'/20181119'} component={() => <Bundle el={() => import('pages/Review/A20181119')}/>}/>
+            <Route path={'/curve'} component={() => <Bundle el={() => import('pages/Curve')}/>}/>
+            <Route path={'/geometry'} component={() => <Bundle el={() => import('pages/GeometryTest')}/>}/>
+            <Route path={'/'} component={() => <Bundle el={() => import('pages/Home')}/>}/>
         </Switch>
-    }} />
+    }}/>
 </Router>

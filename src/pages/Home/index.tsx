@@ -13,8 +13,8 @@ import {
 } from "three";
 
 type Props = {
-    dispatch
-};
+    // dispatch
+}
 
 class Home extends Component<Props> {
     /**
